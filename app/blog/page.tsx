@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Heart, MessageCircle, Share2, Send, MoreVertical } from 'lucide-react'
@@ -5,8 +6,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Textarea } from "@/components/ui/textarea"
+///Arpit: implement below components needed
+ 
+/* import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Textarea } from "@/components/ui/textarea" */
 
 const blogPosts = [
   {
@@ -88,7 +91,9 @@ export default function BlogPage() {
             >
               <Card>
                 <CardHeader>
-                  <div className="flex justify-between items-start">
+                  {
+                  /////////////////////////////
+                  /* <div className="flex justify-between items-start">
                     <div>
                       <CardTitle>{post.title}</CardTitle>
                       <CardDescription>
@@ -107,7 +112,7 @@ export default function BlogPage() {
                         <DropdownMenuItem>Report</DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
-                  </div>
+                  </div> */}
                 </CardHeader>
                 <CardContent>
                   <img src={post.image} alt={post.title} className="w-full h-64 object-cover rounded-lg mb-4" />
@@ -153,11 +158,11 @@ export default function BlogPage() {
                       className="mt-4"
                     >
                       <div className="flex items-center space-x-2">
-                        <Textarea
+                      {/*   <Textarea
                           name="comment"
                           placeholder="Add a comment..."
                           className="flex-1"
-                        />
+                        /> */}
                         <Button type="submit" size="icon">
                           <Send className="h-4 w-4" />
                           <span className="sr-only">Post comment</span>

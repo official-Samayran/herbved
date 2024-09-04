@@ -26,15 +26,18 @@ export function HomePage() {
       <header className="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
-            <img src="/placeholder.svg?height=40&width=40" alt="AYUSH Botanicum Logo" className="h-10 w-10" />
+           <a href="/">
+           
+            <img src="/placeholder.svg?height=40&width=40" alt="AYUSH Botanicum Logo" className="h-10 w-10"/>
             <h1 className="text-2xl font-bold text-emerald-800 dark:text-emerald-400">AYUSH Botanicum</h1>
+            </a>
           </div>
           <nav className="hidden md:flex space-x-6">
-            <a href="#" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Home</a>
-            <a href="#" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Plants</a>
-            <a href="#" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Blog</a>
-            <a href="#" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Shop</a>
-            <a href="#" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Community</a>
+            <a href="/home" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Home</a>
+            <a href="/plants" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Plants</a>
+            <a href="/blog" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Blog</a>
+            <a href="/shop" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Shop</a>
+            <a href="/communtity" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Community</a>
           </nav>
           <div className="flex items-center space-x-4">
             <form className="hidden md:flex items-center">
