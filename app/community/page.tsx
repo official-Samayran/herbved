@@ -1,3 +1,5 @@
+//forum edited
+'use client';
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { MessageSquare, Rss, Search, Plus, ThumbsUp, MessageCircle, Share2, MoreVertical } from 'lucide-react'
@@ -6,10 +8,12 @@ import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+
+//Arpit: needed components
+/* import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
+import { Textarea } from "@/components/ui/textarea" */
 
 const communityPosts = [
   {
@@ -75,7 +79,7 @@ export default function ForumPage() {
     <div className="min-h-screen bg-sage-50 dark:bg-gray-900 text-emerald-900 dark:text-emerald-100">
       <header className="bg-white dark:bg-gray-800 shadow-sm py-4">
         <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold text-emerald-800 dark:text-emerald-400">AYUSH Botanicum Forum</h1>
+          <h1 className="text-3xl font-bold text-emerald-800 dark:text-emerald-400">HerbVed Forum</h1>
         </div>
       </header>
 
@@ -97,7 +101,7 @@ export default function ForumPage() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <Input type="search" placeholder="Search discussions..." className="pl-10" />
             </div>
-            <Dialog>
+            {/* <Dialog>
               <DialogTrigger asChild>
                 <Button>
                   <Plus className="h-5 w-5 mr-2" />
@@ -123,8 +127,9 @@ export default function ForumPage() {
                   <Button type="submit">Post</Button>
                 </DialogFooter>
               </DialogContent>
-            </Dialog>
-          </div>
+            </Dialog>*/}
+
+          </div> 
 
           <TabsContent value="community">
             <div className="space-y-6">
@@ -166,7 +171,7 @@ export default function ForumPage() {
                           {post.shares}
                         </Button>
                       </div>
-                      <DropdownMenu>
+                     {/*  <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button variant="ghost" size="sm">
                             <MoreVertical className="h-4 w-4" />
@@ -176,7 +181,7 @@ export default function ForumPage() {
                           <DropdownMenuItem>Save Post</DropdownMenuItem>
                           <DropdownMenuItem>Report</DropdownMenuItem>
                         </DropdownMenuContent>
-                      </DropdownMenu>
+                      </DropdownMenu> */}
                     </CardFooter>
                   </Card>
                 </motion.div>
@@ -215,7 +220,7 @@ export default function ForumPage() {
 
       <footer className="bg-emerald-900 dark:bg-gray-900 text-white py-8 mt-12">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2023 AYUSH Botanicum Forum. All rights reserved.</p>
+          <p>&copy; 2023 HerbVed Forum. All rights reserved.</p>
         </div>
       </footer>
     </div>

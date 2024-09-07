@@ -1,13 +1,16 @@
+//virtual tours
+'use client';
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Play, Pause, SkipBack, SkipForward, Volume2, VolumeX } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Slider } from "@/components/ui/slider"
+///Arpit: below compent need
+/* import { Slider } from "@/components/ui/slider" */
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 const videoTours = [
-  { id: 1, title: "Welcome to AYUSH Botanicum", duration: "5:30", thumbnail: "/placeholder.svg?height=200&width=300&text=Welcome" },
+  { id: 1, title: "Welcome to HerbVed", duration: "5:30", thumbnail: "/placeholder.svg?height=200&width=300&text=Welcome" },
   { id: 2, title: "Medicinal Herbs Garden", duration: "8:45", thumbnail: "/placeholder.svg?height=200&width=300&text=Herbs+Garden" },
   { id: 3, title: "Ayurvedic Plants Section", duration: "7:15", thumbnail: "/placeholder.svg?height=200&width=300&text=Ayurvedic+Plants" },
   { id: 4, title: "Rare Species Conservatory", duration: "6:20", thumbnail: "/placeholder.svg?height=200&width=300&text=Rare+Species" },
@@ -114,23 +117,23 @@ export default function VideoTour() {
                       <Volume2 className="h-4 w-4" />
                     )}
                   </Button>
-                  <Slider
+                  {/* <Slider
                     min={0}
                     max={100}
                     step={1}
                     value={[volume]}
                     onValueChange={handleVolumeChange}
                     className="w-[100px]"
-                  />
+                  /> */}
                 </div>
-                <Slider
+                {/* <Slider
                   min={0}
                   max={parseFloat(currentVideo.duration.split(':')[0]) * 60 + parseFloat(currentVideo.duration.split(':')[1])}
                   step={1}
                   value={[currentTime]}
                   onValueChange={handleTimeChange}
                   className="w-full"
-                />
+                /> */}
                 <div className="flex justify-between text-sm text-gray-500 mt-2">
                   <span>{formatTime(currentTime)}</span>
                   <span>{currentVideo.duration}</span>
@@ -188,7 +191,7 @@ export default function VideoTour() {
 
       <footer className="bg-emerald-900 dark:bg-gray-900 text-white py-8 mt-12">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2023 AYUSH Botanicum Video Tours. All rights reserved.</p>
+          <p>&copy; 2023 HerbVed Video Tours. All rights reserved.</p>
         </div>
       </footer>
     </div>

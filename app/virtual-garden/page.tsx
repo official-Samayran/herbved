@@ -1,12 +1,15 @@
+'use client';
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Search, Info, Volume2, Maximize2, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+
+//Arpit: below compnent needed to implement
+/* import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Slider } from "@/components/ui/slider"
+import { Slider } from "@/components/ui/slider" */
 
 const plants = [
   { id: 1, name: "Tulsi", scientificName: "Ocimum sanctum", description: "Tulsi, also known as Holy Basil, is revered for its medicinal properties in Ayurveda." },
@@ -63,7 +66,7 @@ export default function VirtualGarden() {
             <div className="relative bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
               <motion.img
                 key={selectedPlant.id}
-                src={`/placeholder.svg?height=400&width=600&text=${selectedPlant.name}`}
+                src={`/IMages/tulsi.jpg?height=400&width=600&text=${selectedPlant.name}`}
                 alt={selectedPlant.name}
                 className="w-full h-[400px] object-cover"
                 initial={{ opacity: 0 }}
@@ -75,7 +78,7 @@ export default function VirtualGarden() {
                 <Button variant="secondary" size="icon" onClick={toggleAudio}>
                   <Volume2 className={`h-4 w-4 ${isAudioPlaying ? 'text-emerald-500' : ''}`} />
                 </Button>
-                <Dialog>
+       {/*          <Dialog>
                   <DialogTrigger asChild>
                     <Button variant="secondary" size="icon">
                       <Maximize2 className="h-4 w-4" />
@@ -92,7 +95,7 @@ export default function VirtualGarden() {
                       className="w-full h-auto object-cover rounded-lg"
                     />
                   </DialogContent>
-                </Dialog>
+                </Dialog> */}
               </div>
               <div className="absolute bottom-4 left-4 right-4 flex justify-between">
                 <Button variant="secondary" size="icon" onClick={handlePreviousPlant}>
@@ -105,14 +108,14 @@ export default function VirtualGarden() {
             </div>
             <div className="mt-4 flex items-center space-x-4">
               <span className="text-sm font-medium">Zoom:</span>
-              <Slider
+   {/*            <Slider
                 min={100}
                 max={200}
                 step={10}
                 value={[zoomLevel]}
                 onValueChange={(value) => setZoomLevel(value[0])}
                 className="w-[200px]"
-              />
+              /> */}
               <span className="text-sm font-medium">{zoomLevel}%</span>
             </div>
           </div>
@@ -126,7 +129,7 @@ export default function VirtualGarden() {
               <p>{selectedPlant.description}</p>
             </CardContent>
             <CardFooter>
-              <Select>
+ {/*              <Select>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select view" />
                 </SelectTrigger>
@@ -135,7 +138,7 @@ export default function VirtualGarden() {
                   <SelectItem value="uses">Medicinal Uses</SelectItem>
                   <SelectItem value="cultivation">Cultivation Tips</SelectItem>
                 </SelectContent>
-              </Select>
+              </Select> */}
             </CardFooter>
           </Card>
         </div>
@@ -170,7 +173,7 @@ export default function VirtualGarden() {
 
       <footer className="bg-emerald-900 dark:bg-gray-900 text-white py-8 mt-12">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2023 AYUSH Botanicum Virtual Garden. All rights reserved.</p>
+          <p>&copy; 2023 HerbVed Virtual Garden. All rights reserved.</p>
         </div>
       </footer>
     </div>

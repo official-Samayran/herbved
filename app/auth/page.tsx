@@ -1,11 +1,12 @@
+'use client';
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Eye, EyeOff, Facebook, Github, Twitter } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+/* import { Label } from "@/components/ui/label" */
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Checkbox } from "@/components/ui/checkbox"
+/* import { Checkbox } from "@/components/ui/checkbox" */
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
@@ -21,10 +22,10 @@ export default function LoginPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden">
           <div className="p-6 sm:p-8">
             <div className="flex justify-center mb-8">
-              <img src="/placeholder.svg?height=60&width=60" alt="AYUSH Botanicum Logo" className="h-15 w-15" />
+              <img src="/placeholder.svg?height=60&width=60" alt="HerbVed Logo" className="h-15 w-15" />
             </div>
             <h2 className="text-3xl font-bold text-center text-emerald-800 dark:text-emerald-400 mb-6">
-              Welcome to AYUSH Botanicum
+              Welcome to HerbVed
             </h2>
             <Tabs defaultValue="signin" className="w-full">
               <TabsList className="grid w-full grid-cols-2 mb-6">
@@ -35,11 +36,12 @@ export default function LoginPage() {
                 <form onSubmit={(e) => e.preventDefault()}>
                   <div className="space-y-4">
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
+                {/*       <Label htmlFor="email">Email</Label> */}
+                <input type="email"  name='Enter your email'/> 
                       <Input id="email" type="email" placeholder="Enter your email" required />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="password">Password</Label>
+                     {/*  <Label htmlFor="password">Password</Label> */}
                       <div className="relative">
                         <Input
                           id="password"
@@ -62,8 +64,8 @@ export default function LoginPage() {
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
-                        <Checkbox id="remember" />
-                        <Label htmlFor="remember">Remember me</Label>
+                    {/*     <Checkbox id="remember" />
+                        <Label htmlFor="remember">Remember me</Label> */}
                       </div>
                       <a href="#" className="text-sm text-emerald-600 hover:underline">
                         Forgot password?
@@ -79,15 +81,15 @@ export default function LoginPage() {
                 <form onSubmit={(e) => e.preventDefault()}>
                   <div className="space-y-4">
                     <div className="space-y-2">
-                      <Label htmlFor="signup-name">Full Name</Label>
+              {/*         <Label htmlFor="signup-name">Full Name</Label> */}
                       <Input id="signup-name" type="text" placeholder="Enter your full name" required />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="signup-email">Email</Label>
+                      {/* <Label htmlFor="signup-email">Email</Label> */}
                       <Input id="signup-email" type="email" placeholder="Enter your email" required />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="signup-password">Password</Label>
+                      {/* <Label htmlFor="signup-password">Password</Label> */}
                       <div className="relative">
                         <Input
                           id="signup-password"
@@ -109,7 +111,7 @@ export default function LoginPage() {
                       </div>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <Checkbox id="terms" required />
+                   {/*    <Checkbox id="terms" required />
                       <Label htmlFor="terms">
                         I agree to the{" "}
                         <a href="#" className="text-emerald-600 hover:underline">
@@ -119,7 +121,7 @@ export default function LoginPage() {
                         <a href="#" className="text-emerald-600 hover:underline">
                           Privacy Policy
                         </a>
-                      </Label>
+                      </Label> */}
                     </div>
                     <Button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700">
                       Sign Up

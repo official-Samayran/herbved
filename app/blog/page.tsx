@@ -18,7 +18,7 @@ const blogPosts = [
     author: "Dr. Ayush Kumar",
     date: "May 15, 2023",
     content: "Tulsi, also known as Holy Basil, has been revered in Ayurveda for thousands of years. This article explores its numerous health benefits and how to incorporate it into your daily routine.",
-    image: "/placeholder.svg?height=300&width=500&text=Tulsi+Plant",
+    image: "/tulsi.jpg?height=300&width=500&text=Tulsi+Plant",
     likes: 124,
     comments: [
       { id: 1, author: "Priya Sharma", content: "I've been using Tulsi in my tea for years. It's amazing!" },
@@ -31,7 +31,7 @@ const blogPosts = [
     author: "Dr. Meera Patel",
     date: "June 2, 2023",
     content: "Ashwagandha is an ancient medicinal herb with multiple health benefits. This post delves into its stress-reducing properties and other potential health improvements.",
-    image: "/placeholder.svg?height=300&width=500&text=Ashwagandha",
+    image: "/ashwagandha.jpg?height=100&width=200&text=Ashwagandha",
     likes: 98,
     comments: [
       { id: 1, author: "Amit Singh", content: "I've noticed a significant improvement in my sleep quality since taking Ashwagandha." }
@@ -43,7 +43,7 @@ const blogPosts = [
     author: "Dr. Rajesh Gupta",
     date: "June 10, 2023",
     content: "Brahmi is a powerful herb known for its cognitive-enhancing properties. Learn about its benefits for memory, focus, and overall brain health in this comprehensive guide.",
-    image: "/placeholder.svg?height=300&width=500&text=Brahmi+Leaves",
+    image: "/brahmi.jpg?height=300&width=500&text=Brahmi+Leaves",
     likes: 156,
     comments: []
   }
@@ -76,7 +76,7 @@ export default function BlogPage() {
     <div className="min-h-screen bg-sage-50 dark:bg-gray-900 text-emerald-900 dark:text-emerald-100">
       <header className="bg-white dark:bg-gray-800 shadow-sm py-4">
         <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold text-emerald-800 dark:text-emerald-400">AYUSH Botanicum Blog</h1>
+          <h1 className="text-3xl font-bold text-emerald-800 dark:text-emerald-400">HerbVed Blog</h1>
         </div>
       </header>
 
@@ -179,7 +179,7 @@ export default function BlogPage() {
 
       <footer className="bg-emerald-900 dark:bg-gray-900 text-white py-8 mt-12">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2023 AYUSH Botanicum Blog. All rights reserved.</p>
+          <p>&copy; 2023 HerbVed Blog. All rights reserved.</p>
         </div>
       </footer>
     </div>

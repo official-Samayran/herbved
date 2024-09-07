@@ -1,5 +1,5 @@
 'use client'
-
+import Link from 'next/link';
 import React, { useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Search, Menu, X, ChevronRight, Volume2, PlayCircle, ShoppingCart, User, Globe, Sun, Moon } from 'lucide-react'
@@ -9,6 +9,39 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { argv } from 'process'
+import Head from 'next/head';
+
+const products = [
+  {
+    id: 1,
+    title: "Herbal Facewash",
+    description: "Gentle herbal facewash for daily use.",
+    price: "₹199.99",
+    image: "/mama_facewash.jpeg",
+  },
+  {
+    id: 2,
+    title: "Patanjali Aloevera Capsule",
+    description: "Pure aloe vera capsule for skin nourishment.",
+    price: "₹249.99",
+    image: "/aloevera-capsules.jpg",
+  },
+  {
+    id: 3,
+    title: "Patanjali Coconut Oil",
+    description: "Broad-spectrum sunscreen for all-day protection.",
+    price: "₹349.99",
+    image: "/pat_coco.png",
+  },
+  {
+    id: 4,
+    title: "Patanjali Chavanpras",
+    description: "Patanjali Pure Chavanpras .",
+    price: "₹499.99",
+    image: "/pat_chavanpras.png",
+  },
+];
 
 export function HomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -22,30 +55,37 @@ export function HomePage() {
   }
 
   return (
+  
     <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
       <header className="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
            <a href="/">
            
-            <img src="/placeholder.svg?height=40&width=40" alt="AYUSH Botanicum Logo" className="h-10 w-10"/>
-            <h1 className="text-2xl font-bold text-emerald-800 dark:text-emerald-400">AYUSH Botanicum</h1>
+            <img src="/icon.ico?height=40&width=40" alt="HerbVed Logo" className="h-10 w-10"/>
+            <h1 className="text-2xl font-bold text-emerald-800 dark:text-emerald-400">HerbVed</h1>
             </a>
           </div>
           <nav className="hidden md:flex space-x-6">
-            <a href="/home" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Home</a>
+            <a href="/" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Home</a>
             <a href="/plants" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Plants</a>
             <a href="/blog" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Blog</a>
             <a href="/shop" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Shop</a>
-            <a href="/communtity" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Community</a>
+            <a href="/community" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Community</a>
+            <a href="/virtual-tour" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Tour</a>
+            <a href="/virtual-garden" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Garden</a>          
+          
           </nav>
+          
           <div className="flex items-center space-x-4">
             <form className="hidden md:flex items-center">
               <Input type="search" placeholder="Search plants..." className="rounded-r-none" />
-              <Button type="submit" variant="default" className="rounded-l-none">
+              <Link href="/virtual-garden" passHref legacyBehavior>
+              <Button id ="search" type="button" variant="default"  className="rounded-l-none"  >
                 <Search className="h-4 w-4" />
                 <span className="sr-only">Search</span>
               </Button>
+            </Link>
             </form>
             <Select defaultValue="en">
               <SelectTrigger className="w-[70px]">
@@ -54,17 +94,18 @@ export function HomePage() {
               <SelectContent>
                 <SelectItem value="en">EN</SelectItem>
                 <SelectItem value="hi">HI</SelectItem>
-                <SelectItem value="sa">SA</SelectItem>
+       {/*            <SelectItem value="sa">SA</SelectItem> */}
               </SelectContent>
             </Select>
             <Button variant="ghost" size="icon" onClick={toggleDarkMode}>
               {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
             <Button variant="ghost" size="icon">
-              <ShoppingCart className="h-5 w-5" />
+            <a href="/cart"> <ShoppingCart className="h-5 w-5" /></a>
             </Button>
             <Button variant="ghost" size="icon">
-              <User className="h-5 w-5" />
+             <a href="/profile"> <User className="h-5 w-5" />
+             </a>
             </Button>
             <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -89,9 +130,10 @@ export function HomePage() {
             <a href="#" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Community</a>
             <form className="flex items-center">
               <Input type="search" placeholder="Search plants..." className="rounded-r-none" />
-              <Button type="submit" variant="default" className="rounded-l-none">
+              <Button type="submit" variant="default" className="rounded-l-none" >
                 <Search className="h-4 w-4" />
                 <span className="sr-only">Search</span>
+              
               </Button>
             </form>
           </nav>
@@ -102,7 +144,7 @@ export function HomePage() {
         <section className="relative h-[80vh] overflow-hidden">
           <motion.div style={{ y: parallaxY }} className="absolute inset-0">
             <img
-              src="/placeholder.svg?height=1080&width=1920&text=Lush+Herbal+Garden"
+              src="/Lush_herbal_garden.jpeg?height=1080&width=1920&text=Lush+Herbal+Garden"
               alt="Lush herbal garden"
               className="w-full h-full object-cover"
             />
@@ -131,7 +173,7 @@ export function HomePage() {
                 transition={{ delay: 0.6 }}
               >
                 <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white">
-                  Start Exploring
+                <a href="/virtual-garden">  Start Exploring </a>
                   <ChevronRight className="ml-2 h-5 w-5" />
                 </Button>
               </motion.div>
@@ -143,24 +185,86 @@ export function HomePage() {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold mb-8 text-center">Featured Medicinal Plants</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[1, 2, 3].map((i) => (
+ {/*              {[1].map((i) => (
                 <motion.div
                   key={i}
                   whileHover={{ scale: 1.05 }}
                   className="bg-sage-100 dark:bg-gray-700 rounded-lg overflow-hidden shadow-md"
                 >
                   <img
-                    src={`/placeholder.svg?height=300&width=400&text=Plant+${i}`}
+                    src={`/tulsi.jpg?height=300&width=400&text=Plant+${i}`}
                     alt={`Medicinal Plant ${i}`}
                     className="w-full h-48 object-cover"
                   />
                   <div className="p-4">
                     <h3 className="text-xl font-semibold mb-2">Medicinal Plant {i}</h3>
                     <p className="text-emerald-700 dark:text-emerald-300 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <Button variant="outline" className="w-full">Learn More</Button>
+                    <Button variant="outline" className="w-full">
+                      <a href="/virtual-garden">Learn More</a></Button>
                   </div>
                 </motion.div>
-              ))}
+              ))} */}
+              
+               { <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-sage-100 dark:bg-gray-700 rounded-lg overflow-hidden shadow-md"
+                >
+                  <img
+                    src={`/tulsi.jpg?height=300&width=400&text=Plant`}
+                    alt={`Tulsi`}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="text-xl font-semibold mb-2">Tulsi </h3>
+                    <p className="text-emerald-700 dark:text-emerald-300 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <Link href="/virtual-garden" passHref legacyBehavior >
+                    <Button variant="outline" className="w-full">
+                      <a href="/virtual-garden">Learn More</a>
+                      </Button>
+                      </Link>
+                  </div>
+                </motion.div>
+              }
+               { <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-sage-100 dark:bg-gray-700 rounded-lg overflow-hidden shadow-md"
+                >
+                  <img
+                    src={`/brahmi.jpg?height=300&width=400&text=Plant`}
+                    alt={`Brahmi`}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="text-xl font-semibold mb-2">Brahmi </h3>
+                    <p className="text-emerald-700 dark:text-emerald-300 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <Link href="/virtual-garden" passHref legacyBehavior>
+                    <Button variant="outline" className="w-full">
+                      <a href="/virtual-garden">Learn More</a>
+                      </Button>
+                      </Link>
+                  </div>
+                </motion.div>
+              }
+               { <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-sage-100 dark:bg-gray-700 rounded-lg overflow-hidden shadow-md"
+                >
+                  <img
+                    src={`/ashwagandha.jpg?height=300&width=400&text=Plant`}
+                    alt={`Ashwagandha`}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="text-xl font-semibold mb-2">Ashwagandha </h3>
+                    <p className="text-emerald-700 dark:text-emerald-300 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <Link href="/virtual-garden" passHref legacyBehavior >
+                    <Button variant="outline" className="w-full">
+                      <a href="/virtual-garden">Learn More</a>
+                      </Button>
+                      </Link>
+                  </div>
+                </motion.div>
+              }
             </div>
           </div>
         </section>
@@ -171,7 +275,7 @@ export function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div className="relative">
                 <img
-                  src="/placeholder.svg?height=600&width=800&text=Interactive+3D+Garden"
+                  src="/plant.jpeg?height=600&width=800&text=Interactive+3D+Garden"
                   alt="Interactive 3D Garden"
                   className="rounded-lg shadow-lg"
                 />
@@ -195,7 +299,7 @@ export function HomePage() {
                   </Button>
                   <Button variant="outline">
                     <PlayCircle className="mr-2 h-5 w-5" />
-                    Watch Video Tour
+                   <a href="/virtual-tour"> Watch Video Tour </a>
                   </Button>
                 </div>
               </div>
@@ -236,7 +340,7 @@ export function HomePage() {
                     <p>Recent forum topics go here...</p>
                   </CardContent>
                   <CardFooter>
-                    <Button>Join Forum</Button>
+                    <Button><a href="/community">Join Forum</a></Button>
                   </CardFooter>
                 </Card>
               </TabsContent>
@@ -250,7 +354,7 @@ export function HomePage() {
                     <p>Recent blog post previews go here...</p>
                   </CardContent>
                   <CardFooter>
-                    <Button>Read More</Button>
+                    <Button><a href="/blog">Read More</a></Button>
                   </CardFooter>
                 </Card>
               </TabsContent>
@@ -261,27 +365,71 @@ export function HomePage() {
         <section className="py-16 bg-sage-100 dark:bg-gray-900">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold mb-8 text-center">Featured Products</h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              {[1, 2, 3, 4].map((i) => (
+            {
+            /* <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {/* {[1, 2, 3, 4].map((i) => (
                 <Card key={i}>
                   <CardHeader>
                     <img
-                      src={`/placeholder.svg?height=200&width=200&text=Product+${i}`}
+                      src={`/mama_facewash.jpeg?height=200&width=200&text=Product+${i}`}
                       alt={`Product ${i}`}
                       className="w-full h-48 object-cover rounded-t-lg"
                     />
                   </CardHeader>
                   <CardContent>
                     <CardTitle>Herbal Product {i}</CardTitle>
-                    <CardDescription>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</CardDescription>
+                    <CardDescription>Prduct decription {i}</CardDescription>
                   </CardContent>
                   <CardFooter className="flex justify-between">
-                    <span className="text-lg font-bold">$19.99</span>
+                    <span className="text-lg font-bold">₹199.99</span>
                     <Button>Add to Cart</Button>
                   </CardFooter>
                 </Card>
-              ))}
-            </div>
+              ))} }
+              {
+                <Card >
+                  <CardHeader>
+                    <img
+                      src={`/mama_facewash.jpeg?height=200&width=200&text=Product+`}
+                      alt={`Product `}
+                      className="w-full h-48 object-cover rounded-t-lg"
+                    />
+                  </CardHeader>
+                  <CardContent>
+                    <CardTitle>MamaEarth face Wash | 150ML </CardTitle>
+                    <CardDescription>Prduct decription </CardDescription>
+                  </CardContent>
+                  <CardFooter className="flex justify-between">
+                    <span className="text-lg font-bold">₹199.99</span>
+                    <Button>Add to Cart</Button>
+                  </CardFooter>
+                </Card>
+              }*/
+            }
+
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+      {products.map((product) => (
+        <Card key={product.id}>
+          <CardHeader>
+            <img
+              src={`${product.image}?height=200&width=200&text=${encodeURIComponent(product.title)}`}
+              alt={product.title}
+              className="w-full h-48 object-cover rounded-t-lg"
+            />
+          </CardHeader>
+          <CardContent>
+            <CardTitle>{product.title}</CardTitle>
+            <CardDescription>{product.description}</CardDescription>
+          </CardContent>
+          <CardFooter className="flex justify-between">
+            <span className="text-lg font-bold">{product.price}</span>
+            <Button>Add to Cart</Button>
+          </CardFooter>
+        </Card>
+      ))}
+    </div>
+
+
           </div>
         </section>
       </main>
@@ -290,16 +438,17 @@ export function HomePage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="text-xl font-semibold mb-4">AYUSH Botanicum</h3>
+              <h3 className="text-xl font-semibold mb-4">HerbVed</h3>
               <p>Exploring the healing wisdom of traditional Indian medicine through our virtual herbal garden.</p>
             </div>
             <div>
               <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2">
                 <li><a href="#" className="hover:text-emerald-300 transition-colors">Home</a></li>
-                <li><a href="#" className="hover:text-emerald-300 transition-colors">Plants Database</a></li>
-                <li><a href="#" className="hover:text-emerald-300 transition-colors">Virtual Garden Tour</a></li>
-                <li><a href="#" className="hover:text-emerald-300 transition-colors">About AYUSH</a></li>
+                {/* <li><a href="/plants" className="hover:text-emerald-300 transition-colors">Plants Database</a></li> */}
+                <li><a href="/virtual-garden" className="hover:text-emerald-300 transition-colors">Virtual Garden Tour</a></li>
+                <li><a href="https://ayush.gov.in/" className="hover:text-emerald-300 transition-colors">About AYUSH</a></li>
+                <li><a href="/about" className="hover:text-emerald-300 transition-colors">About HerbVed</a></li>
               </ul>
             </div>
             <div>
@@ -314,7 +463,7 @@ export function HomePage() {
             </div>
           </div>
           <div className="mt-8 text-center text-emerald-300 dark:text-emerald-400">
-            <p>&copy; 2023 AYUSH Botanicum. All rights reserved.</p>
+            <p>&copy; 2023 HerbVed. All rights reserved.</p>
           </div>
         </div>
       </footer>
