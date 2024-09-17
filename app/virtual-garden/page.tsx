@@ -44,9 +44,20 @@ export default function VirtualGarden() {
 
   return (
     <div className="min-h-screen bg-sage-50 dark:bg-gray-900 text-emerald-900 dark:text-emerald-100">
-      <header className="bg-white dark:bg-gray-800 shadow-sm py-4">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold text-emerald-800 dark:text-emerald-400">Virtual Garden</h1>
+       {/* Header */}
+       <header className="bg-white shadow-md">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="flex items-center space-x-4">
+           <a href="/"> <img src="/favicon.ico?height=40&width=40" alt="HerbVed Logo" className="h-10 w-10" />
+           </a>
+            <h1 className="text-3xl font-bold text-emerald-800 dark:text-emerald-400">Virtual-Garden</h1>
+          </div>
+          <nav className="hidden md:flex space-x-6">
+            <a href="/" className="text-sage-700 hover:text-sage-900 transition-colors">Home</a>
+            <a href="/blog" className="text-sage-700 hover:text-sage-900 transition-colors">Blog</a>
+            <a href="/community" className="text-sage-700 hover:text-sage-900 transition-colors">Community</a>
+            <a href="vitual-tour" className="text-sage-700 hover:text-sage-900 transition-colors">Virtual-Tour</a>
+          </nav>
         </div>
       </header>
 
@@ -66,7 +77,7 @@ export default function VirtualGarden() {
             <div className="relative bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
               <motion.img
                 key={selectedPlant.id}
-                src={`/IMages/tulsi.jpg?height=400&width=600&text=${selectedPlant.name}`}
+                src={`/tulsi.jpg?height=400&width=600&text=${selectedPlant.name}`}
                 alt={selectedPlant.name}
                 className="w-full h-[400px] object-cover"
                 initial={{ opacity: 0 }}
@@ -155,7 +166,7 @@ export default function VirtualGarden() {
                 <Card className="cursor-pointer" onClick={() => setSelectedPlant(plant)}>
                   <CardHeader>
                     <img
-                      src={`/placeholder.svg?height=150&width=200&text=${plant.name}`}
+                      src={`/tulsi.jpg?height=150&width=200&text=${plant.name}`}
                       alt={plant.name}
                       className="w-full h-[150px] object-cover rounded-t-lg"
                     />

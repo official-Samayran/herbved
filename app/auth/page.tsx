@@ -22,7 +22,7 @@ export default function LoginPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden">
           <div className="p-6 sm:p-8">
             <div className="flex justify-center mb-8">
-              <img src="/placeholder.svg?height=60&width=60" alt="HerbVed Logo" className="h-15 w-15" />
+              <img src="/favicon.ico" alt="HerbVed Logo" className="h-12 w-15" />
             </div>
             <h2 className="text-3xl font-bold text-center text-emerald-800 dark:text-emerald-400 mb-6">
               Welcome to HerbVed
@@ -71,9 +71,12 @@ export default function LoginPage() {
                         Forgot password?
                       </a>
                     </div>
-                    <Button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700">
-                      Sign In
+                    <Button  type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700">
+                    <a href="/profile"> 
+                    Sign In
+                    </a>
                     </Button>
+                  
                   </div>
                 </form>
               </TabsContent>
@@ -124,7 +127,7 @@ export default function LoginPage() {
                       </Label> */}
                     </div>
                     <Button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700">
-                      Sign Up
+                      <a href="/profile">Sign Up</a>
                     </Button>
                   </div>
                 </form>

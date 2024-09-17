@@ -16,14 +16,15 @@ export default function UserProfile() {
       <header className="bg-white shadow-md">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
-            <img src="/placeholder.svg?height=40&width=40" alt="HerbVed Logo" className="h-10 w-10" />
-            <h1 className="text-2xl font-bold text-sage-800">HerbVed</h1>
+           <a href="/"> <img src="/favicon.ico?height=40&width=40" alt="HerbVed Logo" className="h-10 w-10" />
+           </a>
+            <h1 className="text-3xl font-bold text-emerald-800 dark:text-emerald-400">Profile</h1>
           </div>
           <nav className="hidden md:flex space-x-6">
-            <a href="#" className="text-sage-700 hover:text-sage-900 transition-colors">Home</a>
-            <a href="#" className="text-sage-700 hover:text-sage-900 transition-colors">Plants</a>
-            <a href="#" className="text-sage-700 hover:text-sage-900 transition-colors">Community</a>
-            <a href="#" className="text-sage-700 hover:text-sage-900 transition-colors">About</a>
+            <a href="/" className="text-sage-700 hover:text-sage-900 transition-colors">Home</a>
+            <a href="/blog" className="text-sage-700 hover:text-sage-900 transition-colors">Blog</a>
+            <a href="/community" className="text-sage-700 hover:text-sage-900 transition-colors">Community</a>
+            <a href="vitual-tour" className="text-sage-700 hover:text-sage-900 transition-colors">Virtual-Tour</a>
           </nav>
         </div>
       </header>
@@ -226,11 +227,14 @@ export default function UserProfile() {
               </div>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-sage-700 text-center text-sage-400">
-            <p>&copy; 2023 HerbVed. All rights reserved.</p>
-          </div>
+          
         </div>
       </footer>
+      <footer className="bg-emerald-900 dark:bg-gray-900 text-white py-8 mt-12">
+        <div className="container mx-auto px-4 text-center">
+          <p>&copy; 2023 HerbVed Virtual Garden. All rights reserved.</p>
+        </div>
+        </footer>
     </div>
   )
 }

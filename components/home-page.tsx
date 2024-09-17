@@ -68,7 +68,7 @@ export function HomePage() {
           </div>
           <nav className="hidden md:flex space-x-6">
             <a href="/" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Home</a>
-            <a href="/plants" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Plants</a>
+           {/*  <a href="/plants" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Plants</a> */}
             <a href="/blog" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Blog</a>
             <a href="/shop" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Shop</a>
             <a href="/community" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Community</a>
@@ -94,7 +94,7 @@ export function HomePage() {
               <SelectContent>
                 <SelectItem value="en">EN</SelectItem>
                 <SelectItem value="hi">HI</SelectItem>
-       {/*            <SelectItem value="sa">SA</SelectItem> */}
+             {/* <SelectItem value="sa">SA</SelectItem> */}
               </SelectContent>
             </Select>
             <Button variant="ghost" size="icon" onClick={toggleDarkMode}>
@@ -104,7 +104,7 @@ export function HomePage() {
             <a href="/cart"> <ShoppingCart className="h-5 w-5" /></a>
             </Button>
             <Button variant="ghost" size="icon">
-             <a href="/profile"> <User className="h-5 w-5" />
+             <a href="/auth"> <User className="h-5 w-5" />
              </a>
             </Button>
             <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -123,17 +123,19 @@ export function HomePage() {
           className="md:hidden bg-white dark:bg-gray-800 shadow-lg absolute top-16 left-0 right-0 z-40"
         >
           <nav className="flex flex-col p-4 space-y-4">
-            <a href="#" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Home</a>
-            <a href="#" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Plants</a>
-            <a href="#" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Blog</a>
-            <a href="#" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Shop</a>
-            <a href="#" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Community</a>
+
+           <a href="/" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Home</a> 
+            <a href="/blog" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Blog</a>
+            <a href="/shop" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Shop</a>
+            <a href="/community" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Community</a>
+            <a href="/virtual-tour" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Tour</a>
+            <a href="/virtual-garden" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Garden</a>
+  
             <form className="flex items-center">
-              <Input type="search" placeholder="Search plants..." className="rounded-r-none" />
+            <Input type="search" placeholder="Search plants..." className="rounded-r-none" />
               <Button type="submit" variant="default" className="rounded-l-none" >
                 <Search className="h-4 w-4" />
                 <span className="sr-only">Search</span>
-              
               </Button>
             </form>
           </nav>
