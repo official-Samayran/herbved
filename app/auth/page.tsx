@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 /* import { Label } from "@/components/ui/label" */
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import Image from 'next/image';
+import Link from 'next/link';
 /* import { Checkbox } from "@/components/ui/checkbox" */
 
 export default function LoginPage() {
@@ -22,7 +24,9 @@ export default function LoginPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden">
           <div className="p-6 sm:p-8">
             <div className="flex justify-center mb-8">
-              <img src="/favicon.ico" alt="HerbVed Logo" className="h-12 w-15" />
+             <Link href={'/'}>
+            <Image width={100} height={100} src="/favicon.ico" alt="HerbVed Logo" />
+             </Link>
             </div>
             <h2 className="text-3xl font-bold text-center text-emerald-800 dark:text-emerald-400 mb-6">
               Welcome to HerbVed

@@ -2,12 +2,13 @@
 'use client';
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Play, Pause, SkipBack, SkipForward, Volume2, VolumeX } from 'lucide-react'
+import { Play, Pause, SkipBack, SkipForward, Volume2, VolumeX, User } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 ///Arpit: below compent need
 /* import { Slider } from "@/components/ui/slider" */
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import Image from 'next/image';
 
 const videoTours = [
   { id: 1, title: "Welcome to HerbVed", duration: "5:30", thumbnail: "/placeholder.svg?height=200&width=300&text=Welcome" },
@@ -62,10 +63,26 @@ export default function VideoTour() {
   }
 
   return (
-    <div className="min-h-screen bg-sage-50 dark:bg-gray-900 text-emerald-900 dark:text-emerald-100">
-      <header className="bg-white dark:bg-gray-800 shadow-sm py-4">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold text-emerald-800 dark:text-emerald-400">Video Tour</h1>
+<div className="min-h-screen bg-sage-50 dark:bg-gray-900 text-emerald-900 dark:text-emerald-100">
+       {/* Header */}
+       <header className="bg-white shadow-md">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="flex items-center space-x-4">
+           <a href="/"> <Image src="/favicon.ico?height=40&width=40" alt="HerbVed Logo "  width={500} height={500} className="h-10 w-10" />
+           </a>
+            <h1 className="text-3xl font-bold text-emerald-800 dark:text-emerald-400"><a href="/virtual-tour">Virtual Tour</a></h1>
+          </div>
+          <nav className="hidden md:flex space-x-6">
+            <a href="/" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Home</a>
+            <a href="/blog" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Blog</a>
+            <a href="/community" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Community</a>
+            <a href="/shop" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Shop</a>
+            <a href="/virtual-garden" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Garden</a>
+            <Button variant="ghost" size="icon">
+             <a href="/profile"> <User className="h-5 w-5" />
+             </a>
+            </Button>
+          </nav>
         </div>
       </header>
 
@@ -74,10 +91,11 @@ export default function VideoTour() {
           <div className="md:col-span-2">
             <Card className="overflow-hidden">
               <div className="relative aspect-video bg-black">
-                <img
+                <Image
                   src={currentVideo.thumbnail}
                   alt={currentVideo.title}
                   className="w-full h-full object-cover"
+                  width={500} height={500}
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Button
@@ -166,10 +184,11 @@ export default function VideoTour() {
                           }`}
                           onClick={() => setCurrentVideo(video)}
                         >
-                          <img
+                          <Image
                             src={video.thumbnail}
                             alt={video.title}
                             className="w-20 h-12 object-cover rounded"
+                            width={500} height={500}
                           />
                           <div>
                             <h3 className="font-semibold">{video.title}</h3>

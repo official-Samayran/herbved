@@ -2,12 +2,13 @@
 'use client';
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { MessageSquare, Rss, Search, Plus, ThumbsUp, MessageCircle, Share2, MoreVertical } from 'lucide-react'
+import { MessageSquare, Rss, Search, Plus, ThumbsUp, MessageCircle, Share2, MoreVertical, User } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import Image from 'next/image';
 
 //Arpit: needed components
 /* import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
@@ -77,11 +78,27 @@ export default function ForumPage() {
 
   return (
     <div className="min-h-screen bg-sage-50 dark:bg-gray-900 text-emerald-900 dark:text-emerald-100">
-      <header className="bg-white dark:bg-gray-800 shadow-sm py-4">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold text-emerald-800 dark:text-emerald-400">HerbVed Forum</h1>
-        </div>
-      </header>
+    {/* Header */}
+    <header className="bg-white shadow-md">
+     <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+       <div className="flex items-center space-x-4">
+        <a href="/"> <Image src="/favicon.ico?height=40&width=40" alt="HerbVed Logo "  width={500} height={500} className="h-10 w-10" />
+        </a>
+         <h1 className="text-3xl font-bold text-emerald-800 dark:text-emerald-400"><a href="/community">Community</a></h1>
+       </div>
+       <nav className="hidden md:flex space-x-6">
+         <a href="/" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Home</a>
+         <a href="/blog" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Blog</a>
+         <a href="/shop" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Shop</a>
+         <a href="virtual-tour" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Tour</a>
+         <a href="virtual-garden" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Garden</a>
+         <Button variant="ghost" size="icon">
+             <a href="/profile"> <User className="h-5 w-5" />
+             </a>
+            </Button>
+       </nav>
+     </div>
+   </header>
 
       <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="community" className="w-full" onValueChange={(value) => setActiveTab(value)}>

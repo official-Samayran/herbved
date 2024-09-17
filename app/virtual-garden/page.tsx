@@ -1,10 +1,11 @@
 'use client';
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Search, Info, Volume2, Maximize2, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Search, Info, Volume2, Maximize2, ChevronLeft, ChevronRight, User } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import Image from 'next/image';
 
 //Arpit: below compnent needed to implement
 /* import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
@@ -48,15 +49,20 @@ export default function VirtualGarden() {
        <header className="bg-white shadow-md">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
-           <a href="/"> <img src="/favicon.ico?height=40&width=40" alt="HerbVed Logo" className="h-10 w-10" />
+           <a href="/"> <Image src="/favicon.ico?height=40&width=40" alt="HerbVed Logo "  width={500} height={500} className="h-10 w-10" />
            </a>
-            <h1 className="text-3xl font-bold text-emerald-800 dark:text-emerald-400">Virtual-Garden</h1>
+            <h1 className="text-3xl font-bold text-emerald-800 dark:text-emerald-400"><a href="/virtual-tour">Virtual Garden</a></h1>
           </div>
           <nav className="hidden md:flex space-x-6">
-            <a href="/" className="text-sage-700 hover:text-sage-900 transition-colors">Home</a>
-            <a href="/blog" className="text-sage-700 hover:text-sage-900 transition-colors">Blog</a>
-            <a href="/community" className="text-sage-700 hover:text-sage-900 transition-colors">Community</a>
-            <a href="vitual-tour" className="text-sage-700 hover:text-sage-900 transition-colors">Virtual-Tour</a>
+            <a href="/" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Home</a>
+            <a href="/blog" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Blog</a>
+            <a href="/community" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Community</a>
+            <a href="/shop" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Shop</a>
+            <a href="/virtual-tour" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Tour</a>
+            <Button variant="ghost" size="icon">
+             <a href="/profile"> <User className="h-5 w-5" />
+             </a>
+            </Button>
           </nav>
         </div>
       </header>
@@ -165,10 +171,11 @@ export default function VirtualGarden() {
               >
                 <Card className="cursor-pointer" onClick={() => setSelectedPlant(plant)}>
                   <CardHeader>
-                    <img
+                    <Image
                       src={`/tulsi.jpg?height=150&width=200&text=${plant.name}`}
                       alt={plant.name}
                       className="w-full h-[150px] object-cover rounded-t-lg"
+                      width={500} height={500}
                     />
                   </CardHeader>
                   <CardContent>

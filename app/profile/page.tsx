@@ -3,11 +3,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
+import Image from 'next/image'
 //AM
 /* import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { ScrollArea } from "@/components/ui/scroll-area" */
-import { Leaf, Star, BookOpen, Users, Edit, Settings } from 'lucide-react'
+import { Leaf, Star, BookOpen, Users, Edit, Settings, User } from 'lucide-react'
 
 export default function UserProfile() {
   return (
@@ -16,15 +17,22 @@ export default function UserProfile() {
       <header className="bg-white shadow-md">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
-           <a href="/"> <img src="/favicon.ico?height=40&width=40" alt="HerbVed Logo" className="h-10 w-10" />
+           <a href="/">
+           <Image src="/favicon.ico"  width={500} height={500} alt="HerbVed Logo" className="h-10 w-10" />
+            
            </a>
-            <h1 className="text-3xl font-bold text-emerald-800 dark:text-emerald-400">Profile</h1>
+            <h1 className="text-3xl font-bold text-emerald-800 dark:text-emerald-400"><a href="/profile">Profile</a></h1>
           </div>
           <nav className="hidden md:flex space-x-6">
-            <a href="/" className="text-sage-700 hover:text-sage-900 transition-colors">Home</a>
-            <a href="/blog" className="text-sage-700 hover:text-sage-900 transition-colors">Blog</a>
-            <a href="/community" className="text-sage-700 hover:text-sage-900 transition-colors">Community</a>
-            <a href="vitual-tour" className="text-sage-700 hover:text-sage-900 transition-colors">Virtual-Tour</a>
+            <a href="/" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Home</a>
+            <a href="/blog" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Blog</a>
+            <a href="/community" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Community</a>
+            <a href="/virtual-tour" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Tour</a>
+            <a href="virtual-garden" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Garden</a>
+            <Button variant="ghost" size="icon">
+             <a href="/profile"> <User className="h-5 w-5" />
+             </a>
+            </Button>
           </nav>
         </div>
       </header>
@@ -77,7 +85,7 @@ export default function UserProfile() {
                 <Card>
                   <CardHeader>
                     <CardTitle>Favorite Plants</CardTitle>
-                    <CardDescription>Plants you've marked as favorites</CardDescription>
+                    <CardDescription>Plants you&aposve marked as favorites</CardDescription>
                   </CardHeader>
                   <CardContent>
               {/*       <ScrollArea className="h-[400px]">
@@ -105,7 +113,7 @@ export default function UserProfile() {
                 <Card>
                   <CardHeader>
                     <CardTitle>Your Contributions</CardTitle>
-                    <CardDescription>Plants you've added or edited</CardDescription>
+                    <CardDescription>Plants you&aposve added or edited</CardDescription>
                   </CardHeader>
                   <CardContent>
           {/*           <ScrollArea className="h-[400px]">
@@ -127,7 +135,7 @@ export default function UserProfile() {
                 <Card>
                   <CardHeader>
                     <CardTitle>My Virtual Garden</CardTitle>
-                    <CardDescription>Plants you're currently growing</CardDescription>
+                    <CardDescription>Plants you&aposre currently growing</CardDescription>
                   </CardHeader>
                   <CardContent>
                    {/*  <ScrollArea className="h-[400px]">
@@ -157,7 +165,7 @@ export default function UserProfile() {
                 <Card>
                   <CardHeader>
                     <CardTitle>Achievements</CardTitle>
-                    <CardDescription>Milestones you've reached</CardDescription>
+                    <CardDescription>Milestones you&aposve reached</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

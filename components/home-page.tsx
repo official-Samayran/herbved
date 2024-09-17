@@ -8,9 +8,10 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { argv } from 'process'
-import Head from 'next/head';
+/*import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+ import { argv } from 'process'
+import Head from 'next/head'; */
+import Image from 'next/image';
 
 const products = [
   {
@@ -62,7 +63,7 @@ export function HomePage() {
           <div className="flex items-center space-x-4">
            <a href="/">
            
-            <img src="/icon.ico?height=40&width=40" alt="HerbVed Logo" className="h-10 w-10"/>
+            <Image src="/icon.ico?height=40&width=40" alt="HerbVed Logo" className="h-10 w-10"  width={500} height={500}/>
             <h1 className="text-2xl font-bold text-emerald-800 dark:text-emerald-400">HerbVed</h1>
             </a>
           </div>
@@ -104,9 +105,13 @@ export function HomePage() {
             <a href="/cart"> <ShoppingCart className="h-5 w-5" /></a>
             </Button>
             <Button variant="ghost" size="icon">
-             <a href="/auth"> <User className="h-5 w-5" />
+             <a href="/profile"> <User className="h-5 w-5" />
              </a>
             </Button>
+            <Link href={'/auth'}>
+            <Button className="px-6 py-2 bg-white text-green-600 border border-green-600 rounded-lg font-semibold hover:bg-green-600 hover:text-white transition duration-300 ease-in-out">
+  Sign Up
+</Button></Link>
             <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               <span className="sr-only">Toggle menu</span>
@@ -145,7 +150,8 @@ export function HomePage() {
       <main className="bg-sage-50 dark:bg-gray-900 text-emerald-900 dark:text-emerald-100">
         <section className="relative h-[80vh] overflow-hidden">
           <motion.div style={{ y: parallaxY }} className="absolute inset-0">
-            <img
+            <Image
+             width={500} height={500}
               src="/Lush_herbal_garden.jpeg?height=1080&width=1920&text=Lush+Herbal+Garden"
               alt="Lush herbal garden"
               className="w-full h-full object-cover"
@@ -211,7 +217,7 @@ export function HomePage() {
                   whileHover={{ scale: 1.05 }}
                   className="bg-sage-100 dark:bg-gray-700 rounded-lg overflow-hidden shadow-md"
                 >
-                  <img
+                  <Image width={500} height={500}
                     src={`/tulsi.jpg?height=300&width=400&text=Plant`}
                     alt={`Tulsi`}
                     className="w-full h-48 object-cover"
@@ -231,7 +237,7 @@ export function HomePage() {
                   whileHover={{ scale: 1.05 }}
                   className="bg-sage-100 dark:bg-gray-700 rounded-lg overflow-hidden shadow-md"
                 >
-                  <img
+                  <Image  width={500} height={500}
                     src={`/brahmi.jpg?height=300&width=400&text=Plant`}
                     alt={`Brahmi`}
                     className="w-full h-48 object-cover"
@@ -251,7 +257,7 @@ export function HomePage() {
                   whileHover={{ scale: 1.05 }}
                   className="bg-sage-100 dark:bg-gray-700 rounded-lg overflow-hidden shadow-md"
                 >
-                  <img
+                  <Image  width={500} height={500}
                     src={`/ashwagandha.jpg?height=300&width=400&text=Plant`}
                     alt={`Ashwagandha`}
                     className="w-full h-48 object-cover"
@@ -276,7 +282,7 @@ export function HomePage() {
             <h2 className="text-3xl font-bold mb-8 text-center">Explore Our Virtual Garden</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div className="relative">
-                <img
+                <Image  width={200} height={100}
                   src="/plant.jpeg?height=600&width=800&text=Interactive+3D+Garden"
                   alt="Interactive 3D Garden"
                   className="rounded-lg shadow-lg"
@@ -413,7 +419,7 @@ export function HomePage() {
       {products.map((product) => (
         <Card key={product.id}>
           <CardHeader>
-            <img
+            <Image  width={500} height={500}
               src={`${product.image}?height=200&width=200&text=${encodeURIComponent(product.title)}`}
               alt={product.title}
               className="w-full h-48 object-cover rounded-t-lg"

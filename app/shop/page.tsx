@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react'
-import { ArrowUpDown, Star, ShoppingCart } from "lucide-react"
+import { ArrowUpDown, Star, ShoppingCart, User } from "lucide-react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 /* import {
@@ -60,6 +60,29 @@ export default function ProductListing() {
   }
 
   return (
+    <div className="min-h-screen bg-sage-50 dark:bg-gray-900 text-emerald-900 dark:text-emerald-100">
+       {/* Header */}
+       <header className="bg-white shadow-md">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="flex items-center space-x-4">
+           <a href="/"> <Image src="/favicon.ico?height=40&width=40" alt="HerbVed Logo "  width={500} height={500} className="h-10 w-10" />
+           </a>
+            <h1 className="text-3xl font-bold text-emerald-800 dark:text-emerald-400"><a href="/shop">Shop</a></h1>
+          </div>
+          <nav className="hidden md:flex space-x-6">
+            <a href="/" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Home</a>
+            <a href="/blog" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Blog</a>
+            <a href="/community" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Community</a>
+            <a href="/virtual-tour" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Tour</a>
+            <a href="/virtual-garden" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Garden</a>
+            <Button variant="ghost" size="icon">
+             <a href="/profile"> <User className="h-5 w-5" />
+             </a>
+            </Button>
+          </nav>
+        </div>
+      </header>
+  
     <div className="container mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Our Products</h1>
@@ -109,5 +132,6 @@ export default function ProductListing() {
         ))}
       </div>
     </div>
+  </div>
   )
 }
