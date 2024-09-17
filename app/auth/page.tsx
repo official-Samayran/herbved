@@ -31,7 +31,7 @@ export default function LoginPage() {
             <h2 className="text-3xl font-bold text-center text-emerald-800 dark:text-emerald-400 mb-6">
               Welcome to HerbVed
             </h2>
-            <Tabs defaultValue="signin" className="w-full">
+            <Tabs defaultValue="signup" className="w-full">
               <TabsList className="grid w-full grid-cols-2 mb-6">
                 <TabsTrigger value="signin">Sign In</TabsTrigger>
                 <TabsTrigger value="signup">Sign Up</TabsTrigger>
