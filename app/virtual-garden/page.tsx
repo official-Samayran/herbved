@@ -6,12 +6,14 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import Image from 'next/image';
+import Tulsi3DModel from '@/components/ui/Tulsi3DModel'; 
 
 //Arpit: below compnent needed to implement
-/* import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+/*
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Slider } from "@/components/ui/slider" */
-
+import { Slider } from "@/components/ui/slider" 
+*/
 const plants = [
   { id: 1, name: "Tulsi", scientificName: "Ocimum sanctum", description: "Tulsi, also known as Holy Basil, is revered for its medicinal properties in Ayurveda." },
   { id: 2, name: "Ashwagandha", scientificName: "Withania somnifera", description: "Ashwagandha is an ancient medicinal herb known for its stress-reducing and energy-boosting properties." },
@@ -31,7 +33,7 @@ export default function VirtualGarden() {
     const nextIndex = (currentIndex + 1) % plants.length
     setSelectedPlant(plants[nextIndex])
   }
-
+   
   const handlePreviousPlant = () => {
     const currentIndex = plants.findIndex(plant => plant.id === selectedPlant.id)
     const previousIndex = (currentIndex - 1 + plants.length) % plants.length
@@ -80,8 +82,8 @@ export default function VirtualGarden() {
 
         <div className="grid md:grid-cols-2 gap-8">
           <div>
-            <div className="relative bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-              <motion.img
+            <div className="relative bg-white dark:bg-gray-100 rounded-lg shadow-lg overflow-hidden">
+              {/* <motion.img
                 key={selectedPlant.id}
                 src={`/tulsi.jpg?height=400&width=600&text=${selectedPlant.name}`}
                 alt={selectedPlant.name}
@@ -90,7 +92,11 @@ export default function VirtualGarden() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
                 style={{ transform: `scale(${zoomLevel / 100})` }}
-              />
+              /> */}
+              <div className="min-h-screen bg-sage-50 dark:bg-gray-800 text-emerald-800 dark:text-emerald-100">
+                  <h1 className="text-3xl font-bold text-center">Explore the Tulsi 3D Model</h1>
+                  <Tulsi3DModel />
+                </div>
               <div className="absolute top-4 right-4 space-x-2">
                 <Button variant="secondary" size="icon" onClick={toggleAudio}>
                   <Volume2 className={`h-4 w-4 ${isAudioPlaying ? 'text-emerald-500' : ''}`} />
@@ -191,7 +197,7 @@ export default function VirtualGarden() {
 
       <footer className="bg-emerald-900 dark:bg-gray-900 text-white py-8 mt-12">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2023 HerbVed Virtual Garden. All rights reserved.</p>
+          <p>&copy; 2024 HerbVed Virtual Garden. All rights reserved.</p>
         </div>
       </footer>
     </div>

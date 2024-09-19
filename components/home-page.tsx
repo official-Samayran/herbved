@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import React, { useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Search, Menu, X, ChevronRight, Volume2, PlayCircle, ShoppingCart, User, Globe, Sun, Moon } from 'lucide-react'
+import { Search, Menu, X, ChevronRight, Volume2, PlayCircle, ShoppingCart, User, Globe, Sun, Moon, Rotate3DIcon, Map, Leaf, FileText, Home } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -50,6 +50,7 @@ export function HomePage() {
   const { scrollYProgress } = useScroll()
   const parallaxY = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
 
+
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode)
     document.documentElement.classList.toggle('dark')
@@ -58,94 +59,122 @@ export function HomePage() {
   return (
   
     <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
-      <header className="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-4">
-           <a href="/">
-           
-            <Image src="/icon.ico?height=40&width=40" alt="HerbVed Logo" className="h-10 w-10"  width={500} height={500}/>
-            <h1 className="text-2xl font-bold text-emerald-800 dark:text-emerald-400">HerbVed</h1>
-            </a>
-          </div>
-          <nav className="hidden md:flex space-x-6">
-            <a href="/" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Home</a>
-           {/*  <a href="/plants" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Plants</a> */}
-            <a href="/blog" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Blog</a>
-            <a href="/shop" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Shop</a>
-            <a href="/community" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Community</a>
-            <a href="/virtual-tour" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Tour</a>
-            <a href="/virtual-garden" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Garden</a>          
-          
-          </nav>
-          
-          <div className="flex items-center space-x-4">
-            <form className="hidden md:flex items-center">
-              <Input type="search" placeholder="Search plants..." className="rounded-r-none" />
-              <Link href="/virtual-garden" passHref legacyBehavior>
-              <Button id ="search" type="button" variant="default"  className="rounded-l-none"  >
-                <Search className="h-4 w-4" />
-                <span className="sr-only">Search</span>
-              </Button>
-            </Link>
-            </form>
-            <Select defaultValue="en">
-              <SelectTrigger className="w-[70px]">
-                <SelectValue placeholder="Language" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="en">EN</SelectItem>
-                <SelectItem value="hi">HI</SelectItem>
-             {/* <SelectItem value="sa">SA</SelectItem> */}
-              </SelectContent>
-            </Select>
-            <Button variant="ghost" size="icon" onClick={toggleDarkMode}>
-              {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </Button>
-            <Button variant="ghost" size="icon">
-            <a href="/cart"> <ShoppingCart className="h-5 w-5" /></a>
-            </Button>
-            <Button variant="ghost" size="icon">
-             <a href="/profile"> <User className="h-5 w-5" />
-             </a>
-            </Button>
-            <Link href={'/auth'}>
-            <Button className="px-6 py-2 bg-white text-green-600 border border-green-600 rounded-lg font-semibold hover:bg-green-600 hover:text-white transition duration-300 ease-in-out">
-  Sign Up
-</Button></Link>
-            <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              <span className="sr-only">Toggle menu</span>
-            </Button>
-          </div>
-        </div>
-      </header>
+<header className="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50">
+  <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="/" className="flex items-center space-x-4">
+      <Image src="/favicon.ico?height=40&width=40" alt="HerbVed Logo" width={50} height={50} />
+    </a>
 
-      {isMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="md:hidden bg-white dark:bg-gray-800 shadow-lg absolute top-16 left-0 right-0 z-40"
-        >
-          <nav className="flex flex-col p-4 space-y-4">
+    {/* Mobile-specific icons (search, cart, user) outside hamburger menu */}
+    <div className="flex items-center space-x-4 md:hidden">
+      <Button variant="ghost" size="icon">
+        <a href="/cart">
+          <ShoppingCart className="h-5 w-5  dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors" />
+        </a>
+      </Button>
+      <Button variant="ghost" size="icon">
+        <a href="/profile">
+          <User className="h-5 w-5  dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors" />
+        </a>
+      </Button>
+      <Button variant="ghost" size="icon" onClick={toggleDarkMode} >
+        {isDarkMode ? <Sun className="h-5 w-5  dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors" /> : <Moon className="h-5 w-5  dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors" />}
+      </Button> 
+      <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        {isMenuOpen ? <X className="h-6 w-6  dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors" /> : <Menu className="h-6 w-6  dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors" />}
+        <span className="sr-only">Toggle menu</span>
+      </Button>
+    </div>
 
-           <a href="/" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Home</a> 
-            <a href="/blog" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Blog</a>
-            <a href="/shop" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Shop</a>
-            <a href="/community" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Community</a>
-            <a href="/virtual-tour" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Tour</a>
-            <a href="/virtual-garden" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Garden</a>
+    {/* Full navigation for larger screens */}
+    <nav className="hidden md:flex space-x-6">
+      <a href="/" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Home</a>
+      <a href="/blog" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Blog</a>
+      <a href="/shop" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Shop</a>
+      <a href="/community" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Community</a>
+      <a href="/virtual-tour" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Tour</a>
+      <a href="/virtual-garden" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Garden</a>
+    </nav>
+
+    {/* Search and theme toggler for larger screens */}
+    <div className="hidden md:flex items-center space-x-4">
+      <form className="flex items-center">
+        <Input type="search" placeholder="Search plants..." className="rounded-r-none" />
+        <Button type="button" variant="default" className="rounded-l-none">
+          <Search className="h-4 w-4" />
+          <span className="sr-only">Search</span>
+        </Button>
+      </form>
+{/*       <Select defaultValue="en">
+        <SelectTrigger className="w-[70px] hover:text-white">
+          <SelectValue placeholder="Language" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="en">EN</SelectItem>
+          <SelectItem value="hi">HI</SelectItem>
+        </SelectContent>
+      </Select> */}
+      <Button variant="ghost" size="icon" onClick={toggleDarkMode}>
+        {isDarkMode ? <Sun className="h-5 w-5 text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors" /> : <Moon className="h-5 w-5 text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors" />}
+      </Button>
+    </div>
+    
+  </div>
   
-            <form className="flex items-center">
-            <Input type="search" placeholder="Search plants..." className="rounded-r-none" />
-              <Button type="submit" variant="default" className="rounded-l-none" >
-                <Search className="h-4 w-4" />
-                <span className="sr-only">Search</span>
-              </Button>
-            </form>
-          </nav>
-        </motion.div>
-      )}
+
+  {/* Mobile hamburger menu with icons */}
+  {isMenuOpen && (
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      className="md:hidden bg-white dark:bg-gray-800 shadow-lg absolute top-16 left-0 right-0 z-40"
+    >
+      <nav className="flex flex-col p-4 space-y-4 overflow-y-auto">
+        <a href="/" className="flex items-center space-x-2 text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
+          <Home className="h-5 w-5" />
+          <span>Home</span>
+        </a>
+        <a href="/blog" className="flex items-center space-x-2 text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
+          <FileText className="h-5 w-5" />
+          <span>Blog</span>
+        </a>
+        <a href="/shop" className="flex items-center space-x-2 text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
+          <ShoppingCart className="h-5 w-5" />
+          <span>Shop</span>
+        </a>
+        <a href="/community" className="flex items-center space-x-2 text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
+          <User className="h-5 w-5" />
+          <span>Community</span>
+        </a>
+        <a href="/virtual-tour" className="flex items-center space-x-2 text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
+          <Map className="h-5 w-5" />
+          <span>Virtual Tour</span>
+        </a>
+        <a href="/virtual-garden" className="flex items-center space-x-2 text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
+          <Leaf className="h-5 w-5" />
+          <span>Virtual Garden</span>
+        </a>
+        
+        <form className="flex items-center space-x-2">
+          <Input type="search" placeholder="Search plants..." className="rounded-r-none" />
+          <Button type="submit" variant="default" className="rounded-l-none">
+            <Search className="h-4 w-4" />
+            <span className="sr-only">Search</span>
+          </Button>
+        </form>
+      </nav>
+
+      {/* Sticky sign-out button at the bottom */}
+      <div className="sticky bottom-0 bg-white dark:bg-gray-800 p-4 shadow-lg">
+        <Button className="w-full px-6 py-2 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-500 transition duration-300 ease-in-out">
+          Sign Out
+        </Button>
+      </div>
+    </motion.div>
+  )}
+</header>
+
 
       <main className="bg-sage-50 dark:bg-gray-900 text-emerald-900 dark:text-emerald-100">
         <section className="relative h-[80vh] overflow-hidden">
@@ -283,15 +312,17 @@ export function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div className="relative">
                 <Image  width={200} height={100}
-                  src="/plant.jpeg?height=600&width=800&text=Interactive+3D+Garden"
+                  src="/brahmi.jpg?height=600&width=800&text=Interactive+3D+Garden"
                   alt="Interactive 3D Garden"
                   className="rounded-lg shadow-lg"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
+                  <Link href="/virtual-garden">
                   <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white">
-                    <PlayCircle className="mr-2 h-5 w-5" />
-                    Start 360° Tour
+                    <Rotate3DIcon className="mr-2 h-5 w-5" />
+                   view 3d model 
                   </Button>
+                  </Link>
                 </div>
               </div>
               <div>
@@ -471,7 +502,7 @@ export function HomePage() {
             </div>
           </div>
           <div className="mt-8 text-center text-emerald-300 dark:text-emerald-400">
-            <p>&copy; 2023 HerbVed. All rights reserved.</p>
+            <p>&copy; 2024 HerbVed. All rights reserved.</p>
           </div>
         </div>
       </footer>
