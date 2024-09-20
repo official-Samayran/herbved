@@ -1,17 +1,18 @@
 'use client'
 import Link from 'next/link';
 import React, { useState } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { Search, Menu, X, ChevronRight, Volume2, PlayCircle, ShoppingCart, User, Globe, Sun, Moon, Rotate3DIcon, Map, Leaf, FileText, Home } from 'lucide-react'
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
+import { Search, Menu, X, ChevronRight, Volume2, PlayCircle, ShoppingCart, User, Globe, Sun, Moon, Rotate3DIcon, Map, Leaf, FileText, Home, GalleryHorizontalEndIcon, GraduationCap, Users2, LucideShoppingBag, Video, LeafyGreen, TriangleAlert, LucideSkull, LucideTractor, User2, LogOut } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+/* import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select" */
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 /*import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
  import { argv } from 'process'
 import Head from 'next/head'; */
 import Image from 'next/image';
+import DropdownButton from './ui/DropdownButton';
 
 const products = [
   {
@@ -43,21 +44,20 @@ const products = [
     image: "/pat_chavanpras.png",
   },
 ];
-
 export function HomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(false)
   const { scrollYProgress } = useScroll()
   const parallaxY = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
-
-
+  
+  
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode)
     document.documentElement.classList.toggle('dark')
   }
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
-  
     <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
 <header className="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50">
   <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -88,13 +88,51 @@ export function HomePage() {
 
     {/* Full navigation for larger screens */}
     <nav className="hidden md:flex space-x-6">
-      <a href="/" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Home</a>
-      <a href="/blog" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Blog</a>
-      <a href="/shop" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Shop</a>
-      <a href="/community" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Community</a>
-      <a href="/virtual-tour" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Tour</a>
-      <a href="/virtual-garden" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Garden</a>
+      <Link href="/" className=" py-2 text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Home</Link>
+      <DropdownButton 
+  name="Forum" // This is the name that will appear on the button
+  links={[
+    { link: "/community", value: "Community & Feed", icon:<Users2/> },
+    { link: "/blog", value: "Blog",icon:<GraduationCap/> },
+    { link: "/", value: "Patent Remedies",icon:<FileText /> },
+  ]}
+/>
+      <DropdownButton
+  name="Learn & Engage" // This is the name that will appear on the button
+  links={[
+    { link: "/", value: "Endangered Plant",icon: <TriangleAlert/> },
+    { link: "/", value: "Extinct Plant",icon:<LucideSkull /> }, 
+    { link: "/", value: "Herb Map",icon:  <Map/> }, 
+    { link: "/", value: "Cultivation Methods",icon:  <LucideTractor /> }, 
+
+    
+  ]}
+/>
+      <DropdownButton
+  name="Interact Virtually" // This is the name that will appear on the button
+  links={[
+    { link: "/virtual-garden", value: "Virtual Garden",icon: <Leaf  /> },
+    { link: "/virtual-tour", value: "Virtual Tour",icon:  <Video/> },
+    
+  ]}
+/>
+      <DropdownButton
+  name="Herbal Products" // This is the name that will appear on the button
+  links={[
+    { link: "/shop", value: "Shop" ,icon: <LucideShoppingBag/>
+    },
+    { link: "/cart", value: "Cart" ,icon:<ShoppingCart/>
+     },
+  ]}
+/>
+
+      {/*     <a href="/virtual-tour" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Tour</a>
+<a href="/shop" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Shop</a>
+<a href="/blog" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Blog</a>
+<a href="/community" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Community</a>
+  <a href="/virtual-garden" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Garden</a> */}
     </nav>
+
 
     {/* Search and theme toggler for larger screens */}
     <div className="hidden md:flex items-center space-x-4">
@@ -117,8 +155,63 @@ export function HomePage() {
       <Button variant="ghost" size="icon" onClick={toggleDarkMode}>
         {isDarkMode ? <Sun className="h-5 w-5 text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors" /> : <Moon className="h-5 w-5 text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors" />}
       </Button>
+  {/*     <Button variant="ghost" size="icon">
+        <a href="/profile">
+          <User className="h-5 w-5  text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors" />
+        </a>
+      </Button> */}
+
+<div className="relative">
+      {/* The button that triggers the dropdown */}
+      <button
+        onMouseEnter={() => setIsDropdownOpen(true)}
+        onMouseLeave={() => setIsDropdownOpen(false)}
+        className="flex items-center px-0 py-2 text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors"
+      >
+        <User className="w-4 h-4 ml-2" /> {/* User Icon */}
+      </button>
+
+      {/* Dropdown Menu */}
+      <AnimatePresence>
+        {isDropdownOpen && (
+          <motion.div
+          initial={{ opacity: 0, x: 10 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 10 }}
+          onMouseEnter={() => setIsDropdownOpen(true)}
+          onMouseLeave={() => setIsDropdownOpen(false)}
+          className="absolute right-0 top-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg rounded-md z-50"
+          >
+            <div className="py-2">
+              {/* Profile Link */}
+              <Link
+                href="/profile"
+                className="flex px-4 py-2 text-sm text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors items-center"
+              >
+                <User className="w-4 h-4 mr-2" /> {/* Profile icon */}
+                Profile
+              </Link>
+
+              {/* Sign Out Link */}
+              <Link
+                href="/auth"
+                className="flex items-center px-4 py-2 text-sm text-white bg-emerald-700 hover:bg-white hover:text-emerald-700 border border-emerald-700 rounded-md transition-colors"
+              >
+                <LogOut className="w-4 h-4 mr-2" /> {/* Sign out icon */}
+                Sign Out
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
-    
+
+
+    </div>
+
+                      
+
+     
   </div>
   
 
@@ -175,7 +268,6 @@ export function HomePage() {
   )}
 </header>
 
-
       <main className="bg-sage-50 dark:bg-gray-900 text-emerald-900 dark:text-emerald-100">
         <section className="relative h-[80vh] overflow-hidden">
           <motion.div style={{ y: parallaxY }} className="absolute inset-0">
@@ -194,7 +286,7 @@ export function HomePage() {
                 transition={{ delay: 0.2 }}
                 className="text-4xl md:text-6xl font-bold mb-4"
               >
-                Discover the Healing Power of Nature
+               HerbVed: The Virtual Veda for Herbs 
               </motion.h2>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -202,14 +294,14 @@ export function HomePage() {
                 transition={{ delay: 0.4 }}
                 className="text-xl md:text-2xl mb-8"
               >
-                Explore our virtual garden of AYUSH medicinal plants
+              
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
               >
-                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white">
+                <Button   className="bg-emerald-700 text-white hover:bg-white hover:text-emerald-700 transition-colors">
                 <a href="/virtual-garden">  Start Exploring </a>
                   <ChevronRight className="ml-2 h-5 w-5" />
                 </Button>
