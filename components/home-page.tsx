@@ -13,7 +13,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import Head from 'next/head'; */
 import Image from 'next/image';
 import DropdownButton from './ui/DropdownButton';
-import { useTheme } from '@/app/context/themeContext';
+import { useTheme } from '@/components/context/themeContext';
 
 const products = [
   {
@@ -58,7 +58,7 @@ export function HomePage() {
   } */
 
     const { isDarkMode, toggleDarkMode } =useTheme();
-    
+
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
