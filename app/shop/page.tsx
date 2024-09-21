@@ -62,7 +62,7 @@ export default function ProductListing() {
   return (
     <div className="min-h-screen bg-sage-50 dark:bg-gray-900 text-emerald-900 dark:text-emerald-100">
        {/* Header */}
-       <header className="bg-white shadow-md">
+       <header className="bg-white shadow-md  dark:bg-gray-800 shadow-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
            <a href="/"> <Image src="/favicon.ico?height=40&width=40" alt="HerbVed Logo "  width={500} height={500} className="h-10 w-10" />

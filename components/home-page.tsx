@@ -13,6 +13,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import Head from 'next/head'; */
 import Image from 'next/image';
 import DropdownButton from './ui/DropdownButton';
+import { useTheme } from '@/app/context/themeContext';
 
 const products = [
   {
@@ -46,15 +47,18 @@ const products = [
 ];
 export function HomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  //const [isDarkMode, setIsDarkMode] = useState(false)
   const { scrollYProgress } = useScroll()
   const parallaxY = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
   
   
-  const toggleDarkMode = () => {
+ /*  const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode)
     document.documentElement.classList.toggle('dark')
-  }
+  } */
+
+    const { isDarkMode, toggleDarkMode } =useTheme();
+    
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (

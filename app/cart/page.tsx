@@ -41,7 +41,7 @@ export default function HerbalCart() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100">
       {/* Header */}
-      <header className="bg-white shadow-md">
+      <header className="bg-white shadow-md  dark:bg-gray-800 shadow-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
            <a href="/"> <Image src="/favicon.ico?height=40&width=40" alt="HerbVed Logo"  width={500} height={500} className="h-10 w-10" />
