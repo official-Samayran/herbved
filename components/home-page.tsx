@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import React, { useState } from 'react'
 import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
-import { Search, Menu, X, ChevronRight, Volume2, PlayCircle, ShoppingCart, User, Globe, Sun, Moon, Rotate3DIcon, Map, Leaf, FileText, Home, GalleryHorizontalEndIcon, GraduationCap, Users2, LucideShoppingBag, Video, LeafyGreen, TriangleAlert, LucideSkull, LucideTractor, User2, LogOut } from 'lucide-react'
+import { Search, Menu, X, ChevronRight, Volume2, PlayCircle, ShoppingCart, User, Globe, Sun, Moon, Rotate3DIcon, Map, Leaf, FileText, Home, GalleryHorizontalEndIcon, GraduationCap, Users2, LucideShoppingBag, Video, LeafyGreen, TriangleAlert, LucideSkull, LucideTractor, User2, LogOut, LogIn } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 /* import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select" */
@@ -201,8 +201,8 @@ export function HomePage() {
                 href="/auth"
                 className="flex items-center px-4 py-2 text-sm text-white bg-emerald-700 hover:bg-white hover:text-emerald-700 border border-emerald-700 rounded-md transition-colors"
               >
-                <LogOut className="w-4 h-4 mr-2" /> {/* Sign out icon */}
-                Sign Out
+                <LogIn className="w-4 h-4 mr-2" /> {/* Sign out icon */}
+                Sign In
               </Link>
             </div>
           </motion.div>
@@ -349,7 +349,8 @@ export function HomePage() {
                   />
                   <div className="p-4">
                     <h3 className="text-xl font-semibold mb-2">Tulsi </h3>
-                    <p className="text-emerald-700 dark:text-emerald-300 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p className="text-emerald-700 dark:text-emerald-300 mb-4">Tulsi 
+                      <b>(Ocimum sanctum)</b>, also known as Holy Basil, is a highly revered herb in Indian culture and traditional medicine. It is known for its numerous health benefits and spiritual significance.</p>
                     <Link href="/virtual-garden" passHref legacyBehavior >
                     <Button variant="outline" className="w-full">
                       <a href="/virtual-garden">Learn More</a>
@@ -369,7 +370,7 @@ export function HomePage() {
                   />
                   <div className="p-4">
                     <h3 className="text-xl font-semibold mb-2">Brahmi </h3>
-                    <p className="text-emerald-700 dark:text-emerald-300 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p className="text-emerald-700 dark:text-emerald-300 mb-4">Brahmi <b> (Bacopa monnieri)</b> is a small creeping herb that grows in wetland areas and is known for its cognitive-enhancing properties. It has been used in Ayurvedic medicine for thousands of years, especially for improving mental functions and as a tonic for the nervous system.</p>
                     <Link href="/virtual-garden" passHref legacyBehavior>
                     <Button variant="outline" className="w-full">
                       <a href="/virtual-garden">Learn More</a>
@@ -389,7 +390,7 @@ export function HomePage() {
                   />
                   <div className="p-4">
                     <h3 className="text-xl font-semibold mb-2">Ashwagandha </h3>
-                    <p className="text-emerald-700 dark:text-emerald-300 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p className="text-emerald-700 dark:text-emerald-300 mb-4">Ashwagandha <b>(Withania somnifera)</b>, commonly known as Indian Ginseng or Winter Cherry, is a small evergreen shrub native to India, North Africa, and the Middle East. It is renowned for its adaptogenic properties, which help the body adapt to stress.</p>
                     <Link href="/virtual-garden" passHref legacyBehavior >
                     <Button variant="outline" className="w-full">
                       <a href="/virtual-garden">Learn More</a>
