@@ -108,7 +108,7 @@ export default function VirtualGarden() {
       </Button>
     </div>
 
-    <div className="absolute bottom-4 left-4 right-4 flex justify-between">
+    <div className="absolute py-10 bottom-4 left-4 right-4 flex justify-between">
       <Button variant="secondary" size="icon" onClick={handlePreviousPlant}>
         <ChevronLeft className="h-4 w-4" />
       </Button>
