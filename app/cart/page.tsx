@@ -72,11 +72,11 @@ export default function HerbalCart() {
           ) : (
             <ul className="space-y-4">
               {cartItems.map((item) => (
-                <li key={item.id} className="flex flex-col sm:flex-row items-center justify-between bg-white p-4 rounded-lg shadow">
+                <li key={item.id} className="flex flex-col sm:flex-row items-center justify-between dark:bg-gray-800 bg-white p-4 rounded-lg shadow">
                   <div className="flex items-center space-x-4 mb-4 sm:mb-0">
                     <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
                     <div>
-                      <h3 className="font-semibold">{item.name}</h3>
+                      <h3 className="dark:text-emerald-500 font-semibold">{item.name}</h3>
                       <p className="text-sm text-gray-500">₹{item.price.toFixed(2)} each</p>
                     </div>
                   </div>
