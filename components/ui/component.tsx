@@ -67,7 +67,7 @@ const PlantCard: React.FC<PlantCardProps> = ({ selectedPlant }) => {
                 <li><strong>Anti-Anxiety:</strong> Reduces stress and anxiety levels, promoting a sense of well-being.</li>
                 <li><strong>Anti-Inflammatory:</strong> Alleviates inflammation-related conditions like arthritis and respiratory issues.</li>
                 <li><strong>Antimicrobial:</strong> Exhibits antibacterial, antiviral, and antifungal properties, making it useful for infections.</li>
-                <li><strong>Immunomodulatory:</strong> Boosts the immune system, enhancing the body's ability to fight infections.</li>
+                <li><strong>Immunomodulatory:</strong> Boosts the immune system, enhancing the body&apos;s ability to fight infections.</li>
                 <li><strong>Digestive Health:</strong> Improves digestion, alleviates bloating, and relieves gas and indigestion.</li>
                 <li><strong>Respiratory Health:</strong> Eases symptoms of respiratory conditions such as coughs, colds, and asthma.</li>
                 <li><strong>Skin Health:</strong> Used in treating acne, eczema, and other skin conditions due to its antimicrobial and anti-inflammatory properties.</li>
