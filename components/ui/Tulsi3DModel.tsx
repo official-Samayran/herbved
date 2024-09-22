@@ -2,19 +2,14 @@ import React from 'react';
 
 const Tulsi3DModel: React.FC = () => {
   return (
-      <div className="sketchfab-embed-wrapper">
+    <div className="sketchfab-embed-wrapper h-full w-full">
       <iframe
         title="Tulsi Tree on a cement tub"
         frameBorder="0"
         allowFullScreen
-       // mozallowfullscreen="true"
-        //webkitallowfullscreen="true"
         allow="autoplay; fullscreen; xr-spatial-tracking"
-        xr-spatial-tracking
-        execution-while-out-of-viewport
-        execution-while-not-rendered
-        web-share
         src="https://sketchfab.com/models/29e20a3ac415461fa12930d04282163c/embed"
+        className="w-full h-full"
       />
       <p style={{
         fontSize: '13px',

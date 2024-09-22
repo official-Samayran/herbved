@@ -298,7 +298,7 @@ export function HomePage() {
                 transition={{ delay: 0.4 }}
                 className="text-xl md:text-2xl mb-8"
               >
-              
+              Interact Virtually
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

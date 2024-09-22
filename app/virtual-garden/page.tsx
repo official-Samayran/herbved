@@ -1,19 +1,23 @@
 'use client';
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Search, Info, Volume2, Maximize2, ChevronLeft, ChevronRight, User } from 'lucide-react'
+import { Search, Info, Volume2, Maximize2, ChevronLeft, ChevronRight, User, Maximize2Icon } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import Image from 'next/image';
-import Tulsi3DModel from '@/components/ui/Tulsi3DModel'; 
+import Tulsi3DModel from '@/components/ui/Tulsi3DModel';
 
 //Arpit: below compnent needed to implement
-/*
+
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Slider } from "@/components/ui/slider" 
-*/
+import { Slider } from "@/components/ui/slider"
+import { ScrollArea } from '@/components/ui/scroll-area';
+import PlantCard from '@/components/ui/component';
+
+
 const plants = [
   { id: 1, name: "Tulsi", scientificName: "Ocimum sanctum", description: "Tulsi, also known as Holy Basil, is revered for its medicinal properties in Ayurveda." },
   { id: 2, name: "Ashwagandha", scientificName: "Withania somnifera", description: "Ashwagandha is an ancient medicinal herb known for its stress-reducing and energy-boosting properties." },
@@ -22,6 +26,13 @@ const plants = [
   { id: 5, name: "Neem", scientificName: "Azadirachta indica", description: "Neem is known for its antibacterial, antifungal, and blood-purifying properties." },
   { id: 6, name: "Shatavari", scientificName: "Asparagus racemosus", description: "Shatavari is known for its benefits to the female reproductive system and as a natural antioxidant." }
 ]
+
+const selectedPlant = {
+  name: 'Tulsi',
+  scientificName: 'Ocimum tenuiflorum',
+  description: 'Tulsi is an aromatic perennial plant native to the Indian subcontinent and widespread throughout the Southeast Asian tropics.',
+};
+
 
 export default function VirtualGarden() {
   const [selectedPlant, setSelectedPlant] = useState(plants[0])
@@ -33,7 +44,7 @@ export default function VirtualGarden() {
     const nextIndex = (currentIndex + 1) % plants.length
     setSelectedPlant(plants[nextIndex])
   }
-   
+
   const handlePreviousPlant = () => {
     const currentIndex = plants.findIndex(plant => plant.id === selectedPlant.id)
     const previousIndex = (currentIndex - 1 + plants.length) % plants.length
@@ -45,14 +56,15 @@ export default function VirtualGarden() {
     // Here you would typically start or stop the actual audio playback
   }
 
+
   return (
     <div className="min-h-screen bg-sage-50 dark:bg-gray-900 text-emerald-900 dark:text-emerald-100">
-       {/* Header */}
-       <header className="bg-white shadow-md  dark:bg-gray-800 shadow-sm sticky top-0 z-50">
+      {/* Header */}
+      <header className="bg-white shadow-md  dark:bg-gray-800 shadow-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
-           <a href="/"> <Image src="/favicon.ico?height=40&width=40" alt="HerbVed Logo "  width={500} height={500} className="h-10 w-10" />
-           </a>
+            <a href="/"> <Image src="/favicon.ico?height=40&width=40" alt="HerbVed Logo " width={500} height={500} className="h-10 w-10" />
+            </a>
             <h1 className="text-3xl font-bold text-emerald-800 dark:text-emerald-400"><a href="/virtual-tour">Virtual Garden</a></h1>
           </div>
           <nav className="hidden md:flex space-x-6">
@@ -62,144 +74,111 @@ export default function VirtualGarden() {
             <a href="/shop" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Shop</a>
             <a href="/virtual-tour" className="text-emerald-700 dark:text-emerald-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Virtual Tour</a>
             <Button variant="ghost" size="icon">
-             <a href="/profile"> <User className="h-5 w-5" />
-             </a>
+              <a href="/profile"> <User className="h-5 w-5" />
+              </a>
             </Button>
           </nav>
         </div>
       </header>
-
       <main className="container mx-auto px-4 py-8">
-        <div className="mb-8">
-          <form className="flex items-center space-x-2">
-            <Input type="search" placeholder="Search plants..." className="max-w-sm" />
-            <Button type="submit" variant="default">
-              <Search className="h-4 w-4 mr-2" />
-              Search
-            </Button>
-          </form>
-        </div>
+  {/* Search Bar */}
+  <div className="mb-8">
+    <form className="flex items-center space-x-2">
+      <Input type="search" placeholder="Search plants..." className="max-w-sm" />
+      <Button type="submit" variant="default">
+        <Search className="h-4 w-4 mr-2" />
+        Search
+      </Button>
+    </form>
+  </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <div>
-            <div className="relative bg-white dark:bg-gray-100 rounded-lg shadow-lg overflow-hidden">
-              {/* <motion.img
-                key={selectedPlant.id}
-                src={`/tulsi.jpg?height=400&width=600&text=${selectedPlant.name}`}
-                alt={selectedPlant.name}
-                className="w-full h-[400px] object-cover"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                style={{ transform: `scale(${zoomLevel / 100})` }}
-              /> */}
-              <div className="min-h-screen bg-sage-50 dark:bg-gray-800 text-emerald-800 dark:text-emerald-100">
-                  <h1 className="text-3xl font-bold text-center">Explore the Tulsi 3D Model</h1>
-                  <Tulsi3DModel />
-                </div>
-              <div className="absolute top-4 right-4 space-x-2">
-                <Button variant="secondary" size="icon" onClick={toggleAudio}>
-                  <Volume2 className={`h-4 w-4 ${isAudioPlaying ? 'text-emerald-500' : ''}`} />
-                </Button>
-       {/*          <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant="secondary" size="icon">
-                      <Maximize2 className="h-4 w-4" />
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-3xl">
-                    <DialogHeader>
-                      <DialogTitle>{selectedPlant.name}</DialogTitle>
-                      <DialogDescription>{selectedPlant.scientificName}</DialogDescription>
-                    </DialogHeader>
-                    <img
-                      src={`/placeholder.svg?height=600&width=800&text=${selectedPlant.name}`}
-                      alt={selectedPlant.name}
-                      className="w-full h-auto object-cover rounded-lg"
-                    />
-                  </DialogContent>
-                </Dialog> */}
-              </div>
-              <div className="absolute bottom-4 left-4 right-4 flex justify-between">
-                <Button variant="secondary" size="icon" onClick={handlePreviousPlant}>
-                  <ChevronLeft className="h-4 w-4" />
-                </Button>
-                <Button variant="secondary" size="icon" onClick={handleNextPlant}>
-                  <ChevronRight className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-            <div className="mt-4 flex items-center space-x-4">
-              <span className="text-sm font-medium">Zoom:</span>
-   {/*            <Slider
-                min={100}
-                max={200}
-                step={10}
-                value={[zoomLevel]}
-                onValueChange={(value) => setZoomLevel(value[0])}
-                className="w-[200px]"
-              /> */}
-              <span className="text-sm font-medium">{zoomLevel}%</span>
-            </div>
-          </div>
+  {/* Main Grid */}
+  <div className="grid md:grid-cols-2 gap-8">
+    {/* Left Section with 3D Model */}
+    <div className="">
+  <div className="relative bg-white dark:bg-gray-100 rounded-lg shadow-lg">
+    <div className="h-[500px] w-full bg-sage-50 dark:bg-gray-800 text-emerald-800 dark:text-emerald-100">
+      <Tulsi3DModel />
+    </div>
 
-          <Card>
+    {/* Audio and Zoom Controls */}
+    <div className="absolute top-4 right-4 space-x-2">
+      <Button variant="secondary" size="icon" onClick={toggleAudio}>
+        <Volume2 className={`h-4 w-4 ${isAudioPlaying ? 'text-emerald-500' : ''}`} />
+      </Button>
+    </div>
+
+    <div className="absolute bottom-4 left-4 right-4 flex justify-between">
+      <Button variant="secondary" size="icon" onClick={handlePreviousPlant}>
+        <ChevronLeft className="h-4 w-4" />
+      </Button>
+      <Button variant="secondary" size="icon" onClick={handleNextPlant}>
+        <ChevronRight className="h-4 w-4" />
+      </Button>
+    </div>
+  </div>
+
+  {/* Zoom Slider */}
+ {/*  <div className="py-10 mt-4 flex items-center space-x-4">
+    <span className="text-sm font-medium">Zoom:</span>
+    <Slider
+      min={100}
+      max={200}
+      step={10}
+      value={[zoomLevel]}
+      onValueChange={(value) => setZoomLevel(value[0])}
+      className="w-[150px]"
+    />
+    <span className="text-sm font-medium">{zoomLevel}%</span>
+  </div> */}
+</div>
+
+    {/* Right Section: Select + PlantCard */}
+    <div>
+      {/* Flex container for Select and PlantCard in the same column */}
+      <div className="flex flex-col space-y-4">
+        {/* Plant Card */}
+        <PlantCard selectedPlant={selectedPlant} />
+      </div>
+    </div>
+  </div>
+
+  {/* More Plants Section */}
+  <section className="mt-12">
+    <h2 className="text-2xl font-bold mb-4">Explore More Plants</h2>
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {plants.map((plant) => (
+        <motion.div
+          key={plant.id}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Card className="cursor-pointer" onClick={() => setSelectedPlant(plant)}>
             <CardHeader>
-              <CardTitle>{selectedPlant.name}</CardTitle>
-              <CardDescription>{selectedPlant.scientificName}</CardDescription>
+              <Image
+                src={`/tulsi.jpg?height=150&width=200&text=${plant.name}`}
+                alt={plant.name}
+                className="w-full h-[150px] object-cover rounded-t-lg"
+                width={500} height={500}
+              />
             </CardHeader>
             <CardContent>
-              <p>{selectedPlant.description}</p>
+              <h3 className="font-semibold">{plant.name}</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{plant.scientificName}</p>
             </CardContent>
-            <CardFooter>
- {/*              <Select>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select view" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="info">Plant Information</SelectItem>
-                  <SelectItem value="uses">Medicinal Uses</SelectItem>
-                  <SelectItem value="cultivation">Cultivation Tips</SelectItem>
-                </SelectContent>
-              </Select> */}
-            </CardFooter>
           </Card>
-        </div>
+        </motion.div>
+      ))}
+    </div>
+  </section>
+</main>
 
-        <section className="mt-12">
-          <h2 className="text-2xl font-bold mb-4">Explore More Plants</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {plants.map((plant) => (
-              <motion.div
-                key={plant.id}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Card className="cursor-pointer" onClick={() => setSelectedPlant(plant)}>
-                  <CardHeader>
-                    <Image
-                      src={`/tulsi.jpg?height=150&width=200&text=${plant.name}`}
-                      alt={plant.name}
-                      className="w-full h-[150px] object-cover rounded-t-lg"
-                      width={500} height={500}
-                    />
-                  </CardHeader>
-                  <CardContent>
-                    <h3 className="font-semibold">{plant.name}</h3>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">{plant.scientificName}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-      </main>
 
       <footer className="bg-emerald-900 dark:bg-gray-900 text-white py-8 mt-12">
         <div className="container mx-auto px-4 text-center">
           <p>&copy; 2024 HerbVed Virtual Garden. All rights reserved.</p>
         </div>
       </footer>
-    </div>
+    </div >
   )
 }
