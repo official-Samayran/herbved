@@ -1,28 +1,22 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
-import { ThemeProvider } from "../components/context/themeContext";
-/* import { Head } from "next/document"; */
 
-const inter = Inter({ subsets: ["latin"] });
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "100 900",
+});
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
+});
 
 export const metadata: Metadata = {
-  title: "HerbVed",
-  description: "HerbVed For SIH 2024. ",
-  icons: {
-    icon: '/favicon.ico',
-  }
- 
+  title: "TTV",
+  description: "Where Films and Music Meet the Future",
 };
-
-function setInitialTheme() {
-  const theme = localStorage.getItem('theme');
-  if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
-  }
-}
 
 export default function RootLayout({
   children,
@@ -31,15 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* This script will run before the page fully loads */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(${setInitialTheme.toString()})();`,
-          }}
-        />
-      </head>
-      <ThemeProvider><body className={inter.className}>{children}</body></ThemeProvider>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
