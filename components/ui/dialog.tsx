@@ -72,7 +72,6 @@ interface DialogContentProps {
   className?: string;
 }
 
-
 const DialogContent: React.FC<DialogContentProps> = ({ children, className = "" }) => {
   return (
     <motion.div
